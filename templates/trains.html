@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Trains - Railway Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                🚂 RailBook
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/trains" class="nav-link active">Search Trains</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container train-page">
+        <h1>Search & Book Trains</h1>
+        
+        <!-- Search Section -->
+        <div class="search-card train-search">
+            <form id="searchForm" class="search-form-row">
+                <div class="form-group-inline">
+                    <label for="source">From</label>
+                    <select id="source" name="source" required>
+                        <option value="">Select Source</option>
+                        {% for source in sources %}
+                        <option value="{{ source }}">{{ source }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="destination">To</label>
+                    <select id="destination" name="destination" required>
+                        <option value="">Select Destination</option>
+                        {% for dest in destinations %}
+                        <option value="{{ dest }}">{{ dest }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group-inline">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+
+                <button type="submit" class="search-btn-inline">Search</button>
+            </form>
+        </div>
+
+        <!-- Results Container -->
+        <div id="resultsSection" style="display: none;">
+            <h2>Available Trains</h2>
+            <div id="trainsList" class="trains-grid"></div>
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResults" class="message-box" style="display: none;">
+            <p>No trains found. Please try different search criteria.</p>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 RailBook - Your Railway Companion | School Fest Exhibition</p>
+    </footer>
+
+    <script>
+        // Set minimum date to today
+        document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // Search form submission
+        document.getElementById('searchForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const source = document.getElementById('source').value;
+            const destination = document.getElementById('destination').value;
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            const errorMessage = document.getElementById('errorMessage');
+            const resultsSection = document.getElementById('resultsSection');
+            const noResults = document.getElementById('noResults');
+
+            // Reset messages
+            errorMessage.style.display = 'none';
+            resultsSection.style.display = 'none';
+            noResults.style.display = 'none';
+            loadingSpinner.style.display = 'flex';
+
+            try {
+                const response = await fetch('/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ source, destination })
+                });
+
+                loadingSpinner.style.display = 'none';
+
+                if (!response.ok) {
+                    const data = await response.json();
+                    throw new Error(data.error || 'Search failed');
+                }
+
+                const data = await response.json();
+
+                if (data.trains && data.trains.length > 0) {
+                    displayTrains(data.trains);
+                    resultsSection.style.display = 'block';
+                } else {
+                    noResults.style.display = 'block';
+                }
+            } catch (error) {
+                loadingSpinner.style.display = 'none';
+                errorMessage.textContent = error.message;
+                errorMessage.style.display = 'block';
+            }
+        });
+
+        function displayTrains(trains) {
+            const trainsList = document.getElementById('trainsList');
+            trainsList.innerHTML = trains.map(train => `
+                <div class="train-card">
+                    <div class="train-card-header">
+                        <h3 class="train-name">${train.name}</h3>
+                        <span class="train-number">Train #${train.number}</span>
+                    </div>
+
+                    <div class="train-card-body">
+                        <div class="time-section">
+                            <div class="time">
+                                <span class="time-value">${train.departure}</span>
+                                <span class="time-label">Departure</span>
+                            </div>
+                            <div class="time-divider">→</div>
+                            <div class="time">
+                                <span class="time-value">${train.arrival}</span>
+                                <span class="time-label">Arrival</span>
+                            </div>
+                        </div>
+
+                        <div class="train-info">
+                            <span class="info-item">
+                                <strong>Duration:</strong> ${train.duration}
+                            </span>
+                            <span class="info-item">
+                                <strong>Route:</strong> ${train.source} → ${train.destination}
+                            </span>
+                            <span class="info-item">
+                                <strong>Seats:</strong> ${train.seats_available} available
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="train-card-footer">
+                        <div class="fare-section">
+                            <span class="fare-label">Fare per Passenger</span>
+                            <span class="fare-price">₹${train.fare}</span>
+                        </div>
+                        <a href="/booking/${train.id}" class="book-btn">
+                            Book Ticket
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>

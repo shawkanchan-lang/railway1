@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Form - Railway Ticket</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                🚂 RailBook
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/trains" class="nav-link">Search Trains</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container booking-page">
+        <h1>Complete Your Booking</h1>
+
+        <div class="booking-layout">
+            <!-- Train Summary -->
+            <div class="train-summary">
+                <h3>Train Details</h3>
+                <div class="summary-content">
+                    <div class="summary-item">
+                        <label>Train:</label>
+                        <span class="summary-value">{{ train.name }} ({{ train.number }})</span>
+                    </div>
+                    <div class="summary-item">
+                        <label>Route:</label>
+                        <span class="summary-value">{{ train.source }} → {{ train.destination }}</span>
+                    </div>
+                    <div class="summary-item">
+                        <label>Departure:</label>
+                        <span class="summary-value">{{ train.departure }}</span>
+                    </div>
+                    <div class="summary-item">
+                        <label>Arrival:</label>
+                        <span class="summary-value">{{ train.arrival }}</span>
+                    </div>
+                    <div class="summary-item highlight">
+                        <label>Fare per Passenger:</label>
+                        <span class="summary-value">₹{{ train.fare }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div class="booking-form-wrapper">
+                <form id="bookingForm" class="booking-form">
+                    <input type="hidden" id="trainId" value="{{ train.id }}">
+
+                    <!-- Passenger Details Section -->
+                    <div class="form-section">
+                        <h3>Passenger Information</h3>
+
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required placeholder="10-digit number" pattern="[0-9]{10}">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="age">Age *</label>
+                                <input type="number" id="age" name="age" required min="1" max="120" placeholder="Enter age">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="gender">Gender *</label>
+                                <select id="gender" name="gender" required>
+                                    <option value="">Select Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Co-passengers Section -->
+                    <div class="form-section">
+                        <h3>Co-Passengers</h3>
+                        <p class="section-hint">Add details of other passengers traveling with you (optional)</p>
+
+                        <div id="passengersContainer"></div>
+
+                        <button type="button" id="addPassengerBtn" class="add-passenger-btn">
+                            + Add Another Passenger
+                        </button>
+                    </div>
+
+                    <!-- Summary -->
+                    <div class="booking-summary">
+                        <div class="summary-row">
+                            <span>Base Fare:</span>
+                            <span id="baseFare">₹{{ train.fare }}</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Passengers:</span>
+                            <span id="passengerCount">1</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total Amount:</span>
+                            <span id="totalAmount">₹{{ train.fare }}</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">
+                        Proceed to Payment
+                    </button>
+
+                    <a href="/trains" class="back-link">← Back to Trains</a>
+                </form>
+
+                <!-- Error Message -->
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 RailBook - Your Railway Companion | School Fest Exhibition</p>
+    </footer>
+
+    <script>
+        const trainId = {{ train.id }};
+        const farePerPassenger = {{ train.fare }};
+        let passengerCount = 1;
+
+        // Initialize
+        addPassengerField();
+
+        // Add passenger field
+        document.getElementById('addPassengerBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            if (passengerCount < 6) {
+                addPassengerField();
+            } else {
+                alert('Maximum 6 passengers allowed per booking');
+            }
+        });
+
+        function addPassengerField() {
+            passengerCount++;
+            const container = document.getElementById('passengersContainer');
+            const fieldId = `passenger-${passengerCount}`;
+
+            const html = `
+                <div class="passenger-form" id="form-${fieldId}">
+                    <div class="passenger-header">
+                        <span>Passenger ${passengerCount}</span>
+                        ${passengerCount > 1 ? `<button type="button" class="remove-btn" onclick="removePassenger(${passengerCount})">Remove</button>` : ''}
+                    </div>
+                    <div class="passenger-fields">
+                        <input type="text" class="passenger-name" placeholder="Passenger Name" required>
+                        <select class="passenger-gender" required>
+                            <option value="">Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <input type="number" class="passenger-age" placeholder="Age" min="1" max="120" required>
+                    </div>
+                </div>
+            `;
+
+            container.insertAdjacentHTML('beforeend', html);
+            updateSummary();
+        }
+
+        function removePassenger(id) {
+            document.getElementById(`form-passenger-${id}`).remove();
+            passengerCount--;
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const totalPassengers = passengerCount;
+            const totalFare = farePerPassenger * totalPassengers;
+
+            document.getElementById('passengerCount').textContent = totalPassengers;
+            document.getElementById('totalAmount').textContent = `₹${totalFare}`;
+        }
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const age = document.getElementById('age').value;
+            const gender = document.getElementById('gender').value;
+
+            // Collect co-passengers
+            const passengers = [
+                { name, gender, age }
+            ];
+
+            const passengerForms = document.querySelectorAll('.passenger-form');
+            passengerForms.forEach(form => {
+                const nameInput = form.querySelector('.passenger-name');
+                const genderInput = form.querySelector('.passenger-gender');
+                const ageInput = form.querySelector('.passenger-age');
+
+                if (nameInput.value) {
+                    passengers.push({
+                        name: nameInput.value,
+                        gender: genderInput.value,
+                        age: ageInput.value
+                    });
+                }
+            });
+
+            try {
+                const response = await fetch('/submit-booking', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        phone,
+                        age,
+                        gender,
+                        train_id: trainId,
+                        passengers
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Redirect to ticket page
+                    window.location.href = `/ticket/${data.pnr}`;
+                } else {
+                    showError(data.error || 'Booking failed. Please try again.');
+                }
+            } catch (error) {
+                showError('Error processing booking. Please try again.');
+                console.error('Error:', error);
+            }
+        });
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

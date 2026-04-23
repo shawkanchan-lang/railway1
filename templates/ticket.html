@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Digital Ticket - Railway Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                🚂 RailBook
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/trains" class="nav-link">Search Trains</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container ticket-page">
+        <h1>Your Booking Confirmed! 🎉</h1>
+
+        <!-- Digital Ticket -->
+        <div class="ticket">
+            <!-- Ticket Header -->
+            <div class="ticket-header">
+                <div class="ticket-logo">🚂</div>
+                <div class="ticket-title">RAILWAY TICKET</div>
+                <div class="ticket-status">✓ CONFIRMED</div>
+            </div>
+
+            <!-- Ticket Number Section -->
+            <div class="ticket-section pnr-section">
+                <div class="pnr-large">
+                    <span class="pnr-label">Booking Reference / PNR</span>
+                    <span class="pnr-number">{{ booking.pnr }}</span>
+                </div>
+                <div class="booking-date">
+                    Booking Date: {{ booking.booking_date }}
+                </div>
+            </div>
+
+            <!-- Passenger Information -->
+            <div class="ticket-section">
+                <h4 class="section-title">Passenger Information</h4>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Name</span>
+                        <span class="info-value">{{ booking.passenger.name }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email</span>
+                        <span class="info-value">{{ booking.passenger.email }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Phone</span>
+                        <span class="info-value">{{ booking.passenger.phone }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Age / Gender</span>
+                        <span class="info-value">{{ booking.passenger.age }} / {{ booking.passenger.gender }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Train Information -->
+            <div class="ticket-section">
+                <h4 class="section-title">Train Information</h4>
+                <div class="train-info-ticket">
+                    <div class="train-header-info">
+                        <h3>{{ booking.train.name }}</h3>
+                        <span class="train-no">Train No: {{ booking.train.number }}</span>
+                    </div>
+
+                    <div class="journey-section">
+                        <div class="journey-point">
+                            <div class="journey-city">{{ booking.train.source }}</div>
+                            <div class="journey-time">{{ booking.train.departure }}</div>
+                        </div>
+                        <div class="journey-line">
+                            <span class="journey-duration">{{ booking.train.duration }}</span>
+                        </div>
+                        <div class="journey-point">
+                            <div class="journey-city">{{ booking.train.destination }}</div>
+                            <div class="journey-time">{{ booking.train.arrival }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Passengers List -->
+            <div class="ticket-section">
+                <h4 class="section-title">Passengers ({{ booking.passengers|length }})</h4>
+                <table class="passengers-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Seat No</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for passenger in booking.passengers %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ passenger.name }}</td>
+                            <td>{{ passenger.gender }}</td>
+                            <td>{{ passenger.age }}</td>
+                            <td class="seat-number">{{ booking.seat_numbers[loop.index0] }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Fare Breakdown -->
+            <div class="ticket-section">
+                <h4 class="section-title">Fare Details</h4>
+                <div class="fare-breakdown">
+                    <div class="fare-item">
+                        <span>Base Fare × {{ booking.passengers|length }}</span>
+                        <span>₹{{ booking.train.fare }} × {{ booking.passengers|length }}</span>
+                    </div>
+                    <div class="fare-item total-fare">
+                        <span>Total Fare</span>
+                        <span>₹{{ booking.total_fare }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Section -->
+            <div class="ticket-footer">
+                <p>This is a digital ticket. Please carry it during your journey.</p>
+                <p class="important">Important: Carry a valid ID proof during travel</p>
+                <div class="ticket-barcode">
+                    █ █ █ █ █ █ █ █ █ █ █ █ █ █ █
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button onclick="printTicket()" class="btn-print">
+                🖨️ Print Ticket
+            </button>
+            <button onclick="downloadTicket()" class="btn-download">
+                📥 Download Ticket
+            </button>
+            <a href="/" class="btn-home">
+                🏠 Back to Home
+            </a>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h3>Need Help?</h3>
+            <p>Contact our customer support:</p>
+            <p><strong>Email:</strong> support@railbook.com | <strong>Phone:</strong> 1800-RAILBOOK</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 RailBook - Your Railway Companion | School Fest Exhibition</p>
+    </footer>
+
+    <script>
+        function printTicket() {
+            window.print();
+        }
+
+        function downloadTicket() {
+            // Generate simple text file
+            const pnr = "{{ booking.pnr }}";
+            const content = `
+RAILWAY DIGITAL TICKET
+======================
+
+Booking Reference (PNR): ${pnr}
+Booking Date: {{ booking.booking_date }}
+
+PASSENGER INFORMATION
+Passenger Name: {{ booking.passenger.name }}
+Email: {{ booking.passenger.email }}
+Phone: {{ booking.passenger.phone }}
+Age: {{ booking.passenger.age }}
+Gender: {{ booking.passenger.gender }}
+
+TRAIN INFORMATION
+Train Name: {{ booking.train.name }}
+Train Number: {{ booking.train.number }}
+From: {{ booking.train.source }}
+To: {{ booking.train.destination }}
+Departure: {{ booking.train.departure }}
+Arrival: {{ booking.train.arrival }}
+
+CO-PASSENGERS
+{% for passenger in booking.passengers %}
+Passenger {{ loop.index }}: {{ passenger.name }} ({{ passenger.gender }}, Age {{ passenger.age }}) - Seat: {{ booking.seat_numbers[loop.index0] }}
+{% endfor %}
+
+FARE DETAILS
+Base Fare: ₹{{ booking.train.fare }}
+Number of Passengers: {{ booking.passengers|length }}
+Total Fare: ₹{{ booking.total_fare }}
+
+IMPORTANT NOTES:
+- This is a digital ticket. Please carry it during your journey.
+- Carry a valid ID proof during travel.
+- Check the train schedule before leaving for the station.
+- Arrive at the station at least 30 minutes before departure.
+
+Thank you for booking with RailBook!
+            `;
+
+            // Create blob and download
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ticket-${pnr}.txt`;
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
