@@ -1,0 +1,148 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Urban Train Station Background -->
+  <defs>
+    <linearGradient id="urbanSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4B0082;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#0047AB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#87CEEB;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="platform" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#A9A9A9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#696969;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="1200" height="500" fill="url(#urbanSky)"/>
+  
+  <!-- Moon/Stars -->
+  <circle cx="1000" cy="80" r="40" fill="#F0F0F0" opacity="0.9"/>
+  <circle cx="100" cy="60" r="2" fill="white"/>
+  <circle cx="200" cy="40" r="2" fill="white"/>
+  <circle cx="800" cy="50" r="2" fill="white"/>
+  <circle cx="950" cy="100" r="1.5" fill="white"/>
+  <circle cx="1100" cy="60" r="1.5" fill="white"/>
+  
+  <!-- City Buildings Background -->
+  <rect x="50" y="200" width="120" height="300" fill="#2F4F4F"/>
+  <rect x="60" y="220" width="15" height="20" fill="#FFD700"/>
+  <rect x="85" y="220" width="15" height="20" fill="#FFD700"/>
+  <rect x="110" y="220" width="15" height="20" fill="#1C1C1C"/>
+  <rect x="60" y="260" width="15" height="20" fill="#FFD700"/>
+  <rect x="85" y="260" width="15" height="20" fill="#1C1C1C"/>
+  <rect x="110" y="260" width="15" height="20" fill="#FFD700"/>
+  <rect x="60" y="300" width="15" height="20" fill="#1C1C1C"/>
+  <rect x="85" y="300" width="15" height="20" fill="#FFD700"/>
+  <rect x="110" y="300" width="15" height="20" fill="#FFD700"/>
+  
+  <rect x="200" y="150" width="100" height="350" fill="#404040"/>
+  <rect x="215" y="170" width="12" height="18" fill="#FFD700"/>
+  <rect x="240" y="170" width="12" height="18" fill="#FFD700"/>
+  <rect x="265" y="170" width="12" height="18" fill="#FFD700"/>
+  <rect x="215" y="210" width="12" height="18" fill="#1C1C1C"/>
+  <rect x="240" y="210" width="12" height="18" fill="#FFD700"/>
+  <rect x="265" y="210" width="12" height="18" fill="#1C1C1C"/>
+  <rect x="215" y="250" width="12" height="18" fill="#FFD700"/>
+  <rect x="240" y="250" width="12" height="18" fill="#FFD700"/>
+  <rect x="265" y="250" width="12" height="18" fill="#1C1C1C"/>
+  <rect x="215" y="290" width="12" height="18" fill="#1C1C1C"/>
+  <rect x="240" y="290" width="12" height="18" fill="#FFD700"/>
+  <rect x="265" y="290" width="12" height="18" fill="#FFD700"/>
+  
+  <!-- Clock Tower -->
+  <rect x="1050" y="120" width="30" height="150" fill="#696969"/>
+  <circle cx="1065" cy="105" r="20" fill="#FFD700"/>
+  <line x1="1065" y1="105" x2="1065" y2="90" stroke="#000" stroke-width="1.5"/>
+  <line x1="1065" y1="105" x2="1080" y2="105" stroke="#000" stroke-width="1.5"/>
+  
+  <!-- Platform -->
+  <rect y="500" width="1200" height="200" fill="url(#platform)"/>
+  
+  <!-- Platform safety line -->
+  <line x1="0" y1="520" x2="1200" y2="520" stroke="#FFD700" stroke-width="3" stroke-dasharray="10,10"/>
+  
+  <!-- Bench -->
+  <rect x="100" y="580" width="150" height="15" fill="#8B4513"/>
+  <rect x="110" y="595" width="8" height="40" fill="#8B4513"/>
+  <rect x="232" y="595" width="8" height="40" fill="#8B4513"/>
+  
+  <!-- Waiting room building -->
+  <rect x="450" y="380" width="200" height="170" fill="#C0C0C0"/>
+  <polygon points="450,380 550,300 650,380" fill="#A9A9A9"/>
+  <rect x="475" y="410" width="25" height="30" fill="#87CEEB"/>
+  <rect x="520" y="410" width="25" height="30" fill="#87CEEB"/>
+  <rect x="565" y="410" width="25" height="30" fill="#87CEEB"/>
+  <rect x="475" y="460" width="25" height="30" fill="#87CEEB"/>
+  <rect x="520" y="460" width="25" height="30" fill="#87CEEB"/>
+  <rect x="565" y="460" width="25" height="30" fill="#87CEEB"/>
+  
+  <!-- Door -->
+  <rect x="525" y="500" width="50" height="60" fill="#8B4513"/>
+  <circle cx="570" cy="530" r="2" fill="#FFD700"/>
+  
+  <!-- Modern Electric Train at Platform -->
+  <g id="electricTrain">
+    <!-- Pantograph -->
+    <line x1="200" y1="350" x2="200" y2="330" stroke="#333" stroke-width="2"/>
+    <polygon points="200,330 180,340 220,340" fill="#333"/>
+    
+    <!-- Nose -->
+    <path d="M 300,380 L 340,365 L 340,425 L 300,440 Z" fill="#1C1C1C"/>
+    
+    <!-- Engine -->
+    <rect x="340" y="365" width="100" height="75" fill="#DC143C" rx="6"/>
+    <rect x="355" y="380" width="20" height="22" fill="#87CEEB"/>
+    <rect x="385" y="380" width="20" height="22" fill="#87CEEB"/>
+    <rect x="415" y="380" width="20" height="22" fill="#87CEEB"/>
+    
+    <!-- Coaches -->
+    <rect x="450" y="365" width="95" height="75" fill="#E74C3C" rx="4"/>
+    <rect x="465" y="380" width="14" height="18" fill="#87CEEB"/>
+    <rect x="485" y="380" width="14" height="18" fill="#87CEEB"/>
+    <rect x="505" y="380" width="14" height="18" fill="#87CEEB"/>
+    <rect x="525" y="380" width="14" height="18" fill="#87CEEB"/>
+    
+    <rect x="555" y="365" width="95" height="75" fill="#E74C3C" rx="4"/>
+    <rect x="570" y="380" width="14" height="18" fill="#87CEEB"/>
+    <rect x="590" y="380" width="14" height="18" fill="#87CEEB"/>
+    <rect x="610" y="380" width="14" height="18" fill="#87CEEB"/>
+    <rect x="630" y="380" width="14" height="18" fill="#87CEEB"/>
+    
+    <!-- AC Car -->
+    <rect x="660" y="365" width="95" height="75" fill="#FFD700" rx="4"/>
+    <rect x="675" y="380" width="15" height="20" fill="#87CEEB"/>
+    <rect x="697" y="380" width="15" height="20" fill="#87CEEB"/>
+    <rect x="719" y="380" width="15" height="20" fill="#87CEEB"/>
+    
+    <!-- Wheels -->
+    <circle cx="370" cy="445" r="13" fill="#333"/>
+    <circle cx="370" cy="445" r="9" fill="#555"/>
+    <circle cx="415" cy="445" r="13" fill="#333"/>
+    <circle cx="415" cy="445" r="9" fill="#555"/>
+    
+    <circle cx="480" cy="445" r="13" fill="#333"/>
+    <circle cx="480" cy="445" r="9" fill="#555"/>
+    <circle cx="535" cy="445" r="13" fill="#333"/>
+    <circle cx="535" cy="445" r="9" fill="#555"/>
+    
+    <circle cx="585" cy="445" r="13" fill="#333"/>
+    <circle cx="585" cy="445" r="9" fill="#555"/>
+    <circle cx="640" cy="445" r="13" fill="#333"/>
+    <circle cx="640" cy="445" r="9" fill="#555"/>
+    
+    <circle cx="690" cy="445" r="13" fill="#333"/>
+    <circle cx="690" cy="445" r="9" fill="#555"/>
+    <circle cx="745" cy="445" r="13" fill="#333"/>
+    <circle cx="745" cy="445" r="9" fill="#555"/>
+  </g>
+  
+  <!-- Departure Board -->
+  <rect x="30" y="550" width="180" height="120" fill="#1C1C1C" rx="5"/>
+  <rect x="40" y="560" width="160" height="30" fill="#FFD700"/>
+  <text x="120" y="580" font-size="16" font-weight="bold" fill="#1C1C1C" text-anchor="middle">DEPARTURES</text>
+  
+  <rect x="40" y="600" width="160" height="60" fill="#333"/>
+  <text x="50" y="618" font-size="10" fill="#00FF00" font-family="monospace">Delhi → Mumbai</text>
+  <text x="50" y="635" font-size="10" fill="#00FF00" font-family="monospace">08:00 AM | Platform 3</text>
+  <text x="50" y="652" font-size="10" fill="#00FF00" font-family="monospace">Status: BOARDING</text>
+</svg>
