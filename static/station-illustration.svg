@@ -1,0 +1,51 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sky -->
+  <rect width="400" height="300" fill="#E0F6FF"/>
+  
+  <!-- Sun -->
+  <circle cx="350" cy="50" r="30" fill="#FFD700"/>
+  
+  <!-- Building/Station -->
+  <rect x="50" y="80" width="300" height="150" fill="#8B4513" rx="10"/>
+  
+  <!-- Roof -->
+  <polygon points="50,80 200,20 350,80" fill="#DC143C"/>
+  
+  <!-- Clock Tower -->
+  <rect x="190" y="0" width="20" height="40" fill="#654321"/>
+  <circle cx="200" cy="45" r="15" fill="#FFD700"/>
+  <line x1="200" y1="45" x2="200" y2="35" stroke="#000" stroke-width="2"/>
+  <line x1="200" y1="45" x2="210" y2="45" stroke="#000" stroke-width="2"/>
+  
+  <!-- Main Door -->
+  <rect x="175" y="150" width="50" height="80" fill="#654321" rx="5"/>
+  <circle cx="220" cy="190" r="3" fill="#FFD700"/>
+  
+  <!-- Windows -->
+  <rect x="70" y="100" width="30" height="30" fill="#87CEEB"/>
+  <rect x="110" y="100" width="30" height="30" fill="#87CEEB"/>
+  <rect x="260" y="100" width="30" height="30" fill="#87CEEB"/>
+  <rect x="300" y="100" width="30" height="30" fill="#87CEEB"/>
+  <rect x="70" y="150" width="30" height="30" fill="#87CEEB"/>
+  <rect x="310" y="150" width="30" height="30" fill="#87CEEB"/>
+  
+  <!-- Platform -->
+  <rect x="40" y="230" width="320" height="20" fill="#A0522D"/>
+  <line x1="60" y1="230" x2="60" y2="250" stroke="#654321" stroke-width="2"/>
+  <line x1="100" y1="230" x2="100" y2="250" stroke="#654321" stroke-width="2"/>
+  <line x1="140" y1="230" x2="140" y2="250" stroke="#654321" stroke-width="2"/>
+  <line x1="180" y1="230" x2="180" y2="250" stroke="#654321" stroke-width="2"/>
+  <line x1="220" y1="230" x2="220" y2="250" stroke="#654321" stroke-width="2"/>
+  <line x1="260" y1="230" x2="260" y2="250" stroke="#654321" stroke-width="2"/>
+  <line x1="300" y1="230" x2="300" y2="250" stroke="#654321" stroke-width="2"/>
+  <line x1="340" y1="230" x2="340" y2="250" stroke="#654321" stroke-width="2"/>
+  
+  <!-- Bench -->
+  <rect x="100" y="265" width="60" height="8" fill="#8B4513"/>
+  <rect x="105" y="273" width="5" height="15" fill="#8B4513"/>
+  <rect x="155" y="273" width="5" height="15" fill="#8B4513"/>
+  
+  <!-- Flag -->
+  <rect x="330" y="70" width="3" height="40" fill="#654321"/>
+  <polygon points="333,75 333,85 350,80" fill="#DC143C"/>
+</svg>

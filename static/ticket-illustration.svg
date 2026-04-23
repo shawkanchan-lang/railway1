@@ -1,0 +1,60 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ticket Background -->
+  <rect x="30" y="40" width="340" height="220" fill="#FFE4B5" stroke="#8B4513" stroke-width="3" rx="10"/>
+  
+  <!-- Dashed Line (Tear Line) -->
+  <line x1="180" y1="40" x2="180" y2="260" stroke="#8B4513" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Left Section -->
+  <!-- Header -->
+  <text x="50" y="70" font-size="20" font-weight="bold" fill="#DC143C">🚂 RailBook</text>
+  <text x="50" y="95" font-size="14" fill="#333">Ticket No: PNR123456789</text>
+  
+  <!-- Journey Details -->
+  <text x="50" y="125" font-size="12" font-weight="bold" fill="#333">FROM:</text>
+  <text x="50" y="145" font-size="16" font-weight="bold" fill="#DC143C">Delhi</text>
+  
+  <text x="50" y="175" font-size="12" font-weight="bold" fill="#333">TO:</text>
+  <text x="50" y="195" font-size="16" font-weight="bold" fill="#DC143C">Mumbai</text>
+  
+  <!-- Right Section -->
+  <!-- Train Info -->
+  <text x="200" y="70" font-size="14" font-weight="bold" fill="#333">Rajdhani Express</text>
+  <text x="200" y="90" font-size="12" fill="#666">Train No: 12953</text>
+  
+  <!-- Date and Time -->
+  <rect x="200" y="105" width="140" height="50" fill="#FFFACD" stroke="#DAA520" stroke-width="2" rx="5"/>
+  <text x="210" y="125" font-size="12" fill="#333">Date: 25-Apr-2026</text>
+  <text x="210" y="145" font-size="12" fill="#333">Departure: 08:00 AM</text>
+  
+  <!-- Seat Info -->
+  <text x="200" y="175" font-size="12" font-weight="bold" fill="#333">Seat: S45</text>
+  <text x="200" y="195" font-size="12" fill="#666">Class: General</text>
+  
+  <!-- Barcode -->
+  <rect x="50" y="210" width="100" height="30" fill="white" stroke="#333" stroke-width="1"/>
+  <line x1="55" y1="215" x2="55" y2="235" stroke="#333" stroke-width="2"/>
+  <line x1="65" y1="215" x2="65" y2="240" stroke="#333" stroke-width="1"/>
+  <line x1="75" y1="215" x2="75" y2="235" stroke="#333" stroke-width="2"/>
+  <line x1="85" y1="215" x2="85" y2="238" stroke="#333" stroke-width="1"/>
+  <line x1="95" y1="215" x2="95" y2="240" stroke="#333" stroke-width="2"/>
+  <line x1="105" y1="215" x2="105" y2="235" stroke="#333" stroke-width="1"/>
+  <line x1="115" y1="215" x2="115" y2="240" stroke="#333" stroke-width="2"/>
+  <line x1="125" y1="215" x2="125" y2="235" stroke="#333" stroke-width="1"/>
+  <line x1="135" y1="215" x2="135" y2="238" stroke="#333" stroke-width="2"/>
+  <line x1="145" y1="215" x2="145" y2="235" stroke="#333" stroke-width="1"/>
+  
+  <!-- QR Code -->
+  <rect x="270" y="205" width="80" height="40" fill="white" stroke="#333" stroke-width="1"/>
+  <rect x="275" y="210" width="5" height="5" fill="#333"/>
+  <rect x="285" y="210" width="5" height="5" fill="#333"/>
+  <rect x="295" y="210" width="5" height="5" fill="#333"/>
+  <rect x="340" y="210" width="5" height="5" fill="#333"/>
+  <rect x="280" y="225" width="3" height="3" fill="#333"/>
+  <rect x="290" y="230" width="3" height="3" fill="#333"/>
+  <rect x="335" y="235" width="3" height="3" fill="#333"/>
+  
+  <!-- Price -->
+  <text x="200" y="240" font-size="14" font-weight="bold" fill="#DC143C">₹ 2,500</text>
+  <text x="200" y="255" font-size="10" fill="#666">Valid for one journey only</text>
+</svg>

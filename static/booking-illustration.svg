@@ -1,0 +1,36 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#F0F8FF"/>
+  
+  <!-- Form Container -->
+  <rect x="40" y="30" width="320" height="250" fill="white" stroke="#4169E1" stroke-width="3" rx="10"/>
+  
+  <!-- Header -->
+  <rect x="40" y="30" width="320" height="50" fill="#4169E1" rx="10"/>
+  <text x="200" y="65" font-size="24" font-weight="bold" fill="white" text-anchor="middle">Complete Booking</text>
+  
+  <!-- Form Fields -->
+  <!-- Name Field -->
+  <text x="60" y="100" font-size="12" font-weight="bold" fill="#333">Full Name</text>
+  <rect x="60" y="105" width="280" height="30" fill="#F5F5F5" stroke="#DDD" stroke-width="1" rx="3"/>
+  <text x="70" y="127" font-size="13" fill="#999">Enter your full name</text>
+  
+  <!-- Email Field -->
+  <text x="60" y="155" font-size="12" font-weight="bold" fill="#333">Email Address</text>
+  <rect x="60" y="160" width="280" height="30" fill="#F5F5F5" stroke="#DDD" stroke-width="1" rx="3"/>
+  <text x="70" y="182" font-size="13" fill="#999">your@email.com</text>
+  
+  <!-- Phone Field -->
+  <text x="60" y="210" font-size="12" font-weight="bold" fill="#333">Phone Number</text>
+  <rect x="60" y="215" width="280" height="30" fill="#F5F5F5" stroke="#DDD" stroke-width="1" rx="3"/>
+  <text x="70" y="237" font-size="13" fill="#999">10-digit number</text>
+  
+  <!-- Submit Button -->
+  <rect x="100" y="260" width="200" height="45" fill="#28A745" rx="5"/>
+  <text x="200" y="290" font-size="16" font-weight="bold" fill="white" text-anchor="middle">Confirm Booking</text>
+  
+  <!-- Checkmark -->
+  <circle cx="370" cy="50" r="20" fill="#28A745"/>
+  <line x1="363" y1="50" x2="368" y2="57" stroke="white" stroke-width="3"/>
+  <line x1="368" y1="57" x2="378" y2="43" stroke="white" stroke-width="3"/>
+</svg>

@@ -1392,3 +1392,97 @@ body {
         border: 1px solid #ccc;
     }
 }
+
+/* ===== Illustration Styles ===== */
+.hero-illustration {
+    text-align: center;
+    margin-top: 3rem;
+    animation: slideInUp 0.8s ease;
+}
+
+.train-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    display: inline-block;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.ticket-illustration-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: var(--gray-light);
+    border-radius: 12px;
+    animation: slideInDown 0.5s ease;
+}
+
+.ticket-illustration {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.booking-header-illustration {
+    text-align: center;
+    margin: 2rem 0;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.booking-img {
+    max-width: 100%;
+    height: auto;
+    max-height: 250px;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+}
+
+.station-illustration-container {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: var(--light-blue);
+    border-radius: 12px;
+    animation: fadeIn 0.6s ease;
+}
+
+.station-illustration {
+    max-width: 100%;
+    height: auto;
+    max-height: 280px;
+    display: inline-block;
+}
+
+/* ===== Animations ===== */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
