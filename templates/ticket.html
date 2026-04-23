@@ -20,6 +20,16 @@
         </div>
     </nav>
 
+    <!-- Page Wrapper with Sidebars -->
+    <div class="page-wrapper">
+        <!-- Left Sidebar -->
+        <div class="left-sidebar">
+            <img src="{{ url_for('static', filename='left-sidebar.svg') }}" alt="Left Sidebar">
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+
     <div class="container ticket-page">
         <h1>Your Booking Confirmed! 🎉</h1>
         
@@ -233,5 +243,15 @@ Thank you for booking with RailBook!
             window.URL.revokeObjectURL(url);
         }
     </script>
+
+        </div>
+        <!-- End Main Content -->
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <img src="{{ url_for('static', filename='right-sidebar.svg') }}" alt="Right Sidebar">
+        </div>
+    </div>
+    <!-- End Page Wrapper -->
 </body>
 </html>

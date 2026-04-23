@@ -21,6 +21,16 @@
         </div>
     </nav>
 
+    <!-- Page Wrapper with Sidebars -->
+    <div class="page-wrapper">
+        <!-- Left Sidebar -->
+        <div class="left-sidebar">
+            <img src="{{ url_for('static', filename='left-sidebar.svg') }}" alt="Left Sidebar">
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+
     <!-- Hero Section -->
     <section class="hero" style="background-image: url('{{ url_for('static', filename='train-landscape-bg.svg') }}'); background-size: cover; background-position: center;">
         <div class="hero-content">
@@ -215,5 +225,15 @@
             }
         });
     </script>
+
+        </div>
+        <!-- End Main Content -->
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <img src="{{ url_for('static', filename='right-sidebar.svg') }}" alt="Right Sidebar">
+        </div>
+    </div>
+    <!-- End Page Wrapper -->
 </body>
 </html>

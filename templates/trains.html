@@ -21,6 +21,16 @@
         </div>
     </nav>
 
+    <!-- Page Wrapper with Sidebars -->
+    <div class="page-wrapper">
+        <!-- Left Sidebar -->
+        <div class="left-sidebar">
+            <img src="{{ url_for('static', filename='left-sidebar.svg') }}" alt="Left Sidebar">
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+
     <div class="container train-page" style="background-image: url('{{ url_for('static', filename='scenic-train-bg.svg') }}'); background-size: cover; background-position: center; background-attachment: fixed;">
         <h1>Search & Book Trains</h1>
         
@@ -184,5 +194,15 @@
             `).join('');
         }
     </script>
+
+        </div>
+        <!-- End Main Content -->
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <img src="{{ url_for('static', filename='right-sidebar.svg') }}" alt="Right Sidebar">
+        </div>
+    </div>
+    <!-- End Page Wrapper -->
 </body>
 </html>
